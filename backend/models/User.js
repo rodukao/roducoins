@@ -4,6 +4,10 @@ const bcrypt = require('bcrypt');
 const UserSchema = new mongoose.Schema({
   email: String,
   password: String,
+  coins: {
+    type: Number,
+    default: 0  // ou qualquer outro valor inicial que você queira
+  }
 });
 
 UserSchema.pre('save', async function(next) {
