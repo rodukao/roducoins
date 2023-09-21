@@ -15,6 +15,8 @@ exports.placeBet = async (req, res) => {
     // Gerar resultado
     const options = ['cara', 'coroa'];
     const result = options[Math.floor(Math.random() * options.length)];
+
+    console.log('Usuário', userId, 'está fazendo uma aposta de', amount, 'em', betOn);
   
     // Atualizar saldo do usuário
     const outcome = betOn === result ? 'ganhou' : 'perdeu';

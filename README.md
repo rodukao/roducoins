@@ -1,4 +1,3 @@
-
 # Roducoin App
 
 ## Descrição
@@ -25,4 +24,11 @@ Instruções para rodar o projeto localmente serão adicionadas em breve.
 ## Contribuições
 
 Este é um projeto em desenvolvimento. Contribuições são bem-vindas!
+Este é o diretório raiz do projeto Roducoins, que inclui as implementações tanto do frontend quanto do backend.
 
+## Diretórios
+
+- `backend/`: Contém todo o código do backend, implementado usando Node.js e Express.
+- `frontend/`: Contém todo o código do frontend, implementado usando React.
+
+Por favor, navegue até os diretórios respectivos para mais informações.
