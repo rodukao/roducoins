@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const BetPage = ({ setCoins, isAuthenticated }) => {
+const BetPage = ({ setCoins, coins, isAuthenticated }) => {
     const navigate = useNavigate();
 
-    if (!isAuthenticated) {
+    useEffect(() => {
+      if (!isAuthenticated) {
         navigate('/login');
-        return null;
-    }
+      }
+    }, [isAuthenticated, navigate]);
+    
   const [betOn, setBetOn] = useState('cara');
   const [amount, setAmount] = useState(0);
 
@@ -20,8 +22,8 @@ const BetPage = ({ setCoins, isAuthenticated }) => {
       }, {
         withCredentials: true,
       });
-      
-      setCoins(response.data.newCoinBalance);
+      console.log(response.data)
+      setCoins(response.data.coins);
     } catch (error) {
       console.error('Erro ao fazer a aposta:', error);
     }
@@ -30,6 +32,7 @@ const BetPage = ({ setCoins, isAuthenticated }) => {
   return (
     <div>
       <h2>Faça sua aposta</h2>
+      <p>Você tem {coins} moedas.</p>
       <div>
         <label>
           Apostar em: 
@@ -46,6 +49,7 @@ const BetPage = ({ setCoins, isAuthenticated }) => {
         </label>
       </div>
       <button onClick={handleBet}>Apostar</button>
+      <button onClick={() => navigate('/home')}>Voltar</button>
     </div>
   );
 };

@@ -96,7 +96,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage onLoginSuccess={() => setIsAuthenticated(true)} isAuthenticated={isAuthenticated} />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/bet" element={<BetPage setCoins={setCoins} isAuthenticated={isAuthenticated} />} />
+        <Route path="/bet" element={<BetPage setCoins={setCoins} coins={coins} isAuthenticated={isAuthenticated} />} />
         <Route path="/home" element={
           isAuthenticated ? (
             <main className="App-main">
