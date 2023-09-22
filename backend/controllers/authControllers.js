@@ -51,3 +51,14 @@ exports.logout = (req, res) => {
     res.clearCookie('token');
     res.status(200).json({ message: 'Deslogado com sucesso' });
   };
+
+exports.getUserInfo = async (req, res) => {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+    
+    if (!user) {
+      return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+  
+    res.status(200).json({ coins: user.coins });
+  };

@@ -15,4 +15,6 @@ router.get('/checkToken', authenticate, authController.checkToken);
 
 router.post('/logout', authController.logout);
 
+router.get('/userInfo', authenticate, authController.getUserInfo);
+
 module.exports = router;

@@ -29,3 +29,22 @@ exports.placeBet = async (req, res) => {
   
     res.status(200).json({ message: `Você ${outcome}!`, coins: user.coins });
   };
+
+exports.addCoinsForAd = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+      
+    if (!user) {
+      return res.status(400).json({ message: 'Usuário não encontrado' });
+    }
+  
+    // Adicionar 15 moedas ao saldo do usuário
+    user.coins += 15;
+    await user.save();
+  
+    res.status(200).json({ newCoinBalance: user.coins });
+  } catch (error) {
+    res.status(500).json({ message: 'Erro ao adicionar moedas', error });
+  }
+};

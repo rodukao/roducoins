@@ -9,4 +9,6 @@ router.post('/bet', [
     check('betOn').isIn(['cara', 'coroa']).withMessage('Você só pode apostar em "cara" ou "coroa"')
 ], authenticate, gameController.placeBet);
 
+router.post('/addCoinsForAd', authenticate, gameController.addCoinsForAd);
+
 module.exports = router;
