@@ -19,7 +19,7 @@ exports.register = async (req, res) => {
     const user = new User({ email, password });
     await user.save();
 
-    const token = jwt.sign({ id: user._id }, 'secreto', { expiresIn: '1d' });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
     res.status(201).json({ token });
 };
@@ -34,7 +34,7 @@ exports.login = async (req, res) => {
         return res.status(400).json({ message: 'E-mail ou senha inválidos', errorCode: 'INVALID_CREDENTIALS' });
     }
 
-    const token = jwt.sign({ id: user._id }, 'secreto', { expiresIn: '1d' });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
     res.cookie('token', token, {
         httpOnly: true,
     });
@@ -61,4 +61,19 @@ exports.getUserInfo = async (req, res) => {
     }
   
     res.status(200).json({ coins: user.coins });
+  };
+
+  exports.getTopUsers = async (req, res) => {
+    const topUsers = await User.find({}, 'email coins')
+        .sort({ coins: -1 })
+        .limit(10)
+        .lean();  // Retorna objetos JavaScript simples
+    const topUsersWithNames = topUsers.map(user => {
+        const name = user.email.split('@')[0];
+        return {
+            name,
+            coins: user.coins
+        };
+    });   
+    res.status(200).json(topUsersWithNames);
   };

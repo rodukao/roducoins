@@ -17,4 +17,6 @@ router.post('/logout', authController.logout);
 
 router.get('/userInfo', authenticate, authController.getUserInfo);
 
+router.get('/topUsers', authController.getTopUsers);
+
 module.exports = router;

@@ -8,7 +8,7 @@ const authenticate = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, 'secreto');  // substitua 'secreto' pela sua chave secreta
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);  // substitua 'secreto' pela sua chave secreta
     req.user = decoded;
     next();
   } catch (ex) {

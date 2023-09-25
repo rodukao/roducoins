@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
+import RankingPage from './components/RankingPage';
 import BetPage from './components/BetPage';
 import { useNavigate, Routes, Route, useLocation } from 'react-router-dom';
 
@@ -97,12 +98,14 @@ function App() {
         <Route path="/login" element={<LoginPage onLoginSuccess={() => setIsAuthenticated(true)} isAuthenticated={isAuthenticated} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/bet" element={<BetPage setCoins={setCoins} coins={coins} isAuthenticated={isAuthenticated} />} />
+        <Route path="/ranking" element={<RankingPage />} />
         <Route path="/home" element={
           isAuthenticated ? (
             <main className="App-main">
               <p>Saldo de moedas: {coins}</p>
               <button onClick={() => navigate('/bet')}>Apostar</button>
               <button onClick={viewAdAndEarnCoins}>Ver Anúncio e Ganhar Moedas</button>
+              <button onClick={() => navigate('/ranking')}>Ranking</button>
               <button onClick={handleLogout}>Deslogar</button>
             </main>
           ) : null
