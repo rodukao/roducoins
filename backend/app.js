@@ -20,7 +20,7 @@ app.use('/api', authRoutes);
 app.use('/api/game', gameRoutes);
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/roducoinApp', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
