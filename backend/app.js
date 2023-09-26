@@ -2,7 +2,7 @@ const express = require('express');
 const authRoutes = require('./routes/authRoutes');
 const gameRoutes = require('./routes/gameRoutes');
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
@@ -18,6 +18,10 @@ app.use(cookieParser());
 app.use(express.json()); // Para entender JSON no corpo das requisições
 app.use('/api', authRoutes);
 app.use('/api/game', gameRoutes);
+
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'Teste bem-sucedido!' });
+});
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
