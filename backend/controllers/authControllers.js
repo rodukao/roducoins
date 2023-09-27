@@ -38,7 +38,6 @@ exports.login = async (req, res) => {
     res.cookie('token', token, {
         httpOnly: true,
         secure: true,  // só enviar o cookie por HTTPS
-        domain: 'https://roducoins.netlify.app',  // seu domínio
         path: '/'  // caminho
     });
     
