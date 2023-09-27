@@ -9,7 +9,7 @@ require('dotenv').config();
 
 // Use o CORS middleware
 app.use(cors({
-  origin: 'https://651426f78d9e3b1b3f583f81--roducoins.netlify.app',  // substitua pelo seu domínio
+  origin: 'https://roducoins.netlify.app/',  // substitua pelo seu domínio
   credentials: true
 }));
 
