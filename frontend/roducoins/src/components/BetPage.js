@@ -16,7 +16,7 @@ const BetPage = ({ setCoins, coins, isAuthenticated }) => {
 
   const handleBet = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/game/bet', {
+      const response = await axios.post('https://roducoins.onrender.com/api/game/bet', {
         amount,
         betOn,
       }, {

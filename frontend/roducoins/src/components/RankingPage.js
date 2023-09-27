@@ -9,7 +9,7 @@ const RankingPage = () => {
   useEffect(() => {
     const fetchRanking = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/topUsers');
+        const res = await axios.get('https://roducoins.onrender.com/api/topUsers');
         setRanking(res.data);
       } catch (error) {
         console.error('Erro ao buscar o ranking:', error);

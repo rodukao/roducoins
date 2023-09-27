@@ -9,7 +9,7 @@ require('dotenv').config();
 
 // Use o CORS middleware
 app.use(cors({
-  origin: 'http://localhost:3000',  // substitua pelo seu domínio
+  origin: 'https://roducoins.onrender.com',  // substitua pelo seu domínio
   credentials: true
 }));
 

@@ -16,7 +16,7 @@ const RegisterPage = ({ isAuthenticated }) => {
 
   const handleRegister = async () => {
     try {
-      const res  = await axios.post('http://localhost:3001/api/register', {
+      const res  = await axios.post('https://roducoins.onrender.com/api/register', {
         email,
         password
       });

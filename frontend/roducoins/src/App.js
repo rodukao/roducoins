@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const checkToken = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/checkToken', {
+        const res = await axios.get('https://roducoins.onrender.com/api/checkToken', {
           withCredentials: true
         });
   
@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/userInfo', {
+        const res = await axios.get('https://roducoins.onrender.com/api/userInfo', {
           withCredentials: true
         });
         setCoins(res.data.coins);
@@ -54,7 +54,7 @@ function App() {
 
   const makeBet = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/game/bet', {
+      const response = await axios.post('https://roducoins.onrender.com/api/game/bet', {
         "amount": 20,
         "betOn": "coroa"
       }, {
@@ -68,7 +68,7 @@ function App() {
 
   const handleLogout = async () => {
     try {
-      await axios.post('http://localhost:3001/api/logout', {}, { withCredentials: true });
+      await axios.post('https://roducoins.onrender.com/api/logout', {}, { withCredentials: true });
       setIsAuthenticated(false);
       navigate('/login');
     } catch (error) {
@@ -78,7 +78,7 @@ function App() {
 
   const viewAdAndEarnCoins = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/api/game/addCoinsForAd', {}, {
+      const response = await axios.post('https://roducoins.onrender.com/api/game/addCoinsForAd', {}, {
         withCredentials: true // Envio de cookies
       });
       // Atualize o estado com o novo saldo de moedas
