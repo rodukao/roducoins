@@ -37,6 +37,9 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
     res.cookie('token', token, {
         httpOnly: true,
+        secure: true,  // só enviar o cookie por HTTPS
+        domain: 'https://roducoins.netlify.app',  // seu domínio
+        path: '/'  // caminho
     });
     
     res.status(200).json({ token, coins: user.coins });
