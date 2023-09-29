@@ -44,9 +44,12 @@ function App() {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
+      const token = localStorage.getItem('token'); // Pega o token do localStorage
       try {
         const res = await axios.get('https://roducoins.onrender.com/api/userInfo', {
-          withCredentials: true
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         });
         setCoins(res.data.coins);
       } catch (err) {
@@ -80,9 +83,12 @@ function App() {
   };
 
   const viewAdAndEarnCoins = async () => {
+    const token = localStorage.getItem('token'); // Pega o token do localStorage
     try {
       const response = await axios.post('https://roducoins.onrender.com/api/game/addCoinsForAd', {}, {
-        withCredentials: true // Envio de cookies
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
       // Atualize o estado com o novo saldo de moedas
       setCoins(response.data.newCoinBalance);
