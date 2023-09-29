@@ -74,13 +74,9 @@ function App() {
   };
 
   const handleLogout = async () => {
-    try {
-      await axios.post('https://roducoins.onrender.com/api/logout', {}, { withCredentials: true });
-      setIsAuthenticated(false);
-      navigate('/login');
-    } catch (error) {
-      console.error('Erro ao deslogar:', error);
-    }
+    localStorage.removeItem('token'); // Remove o token do localStorage
+    setIsAuthenticated(false);
+    navigate('/login');
   };
 
   const viewAdAndEarnCoins = async () => {
