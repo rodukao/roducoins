@@ -20,7 +20,8 @@ const LoginPage = ({ onLoginSuccess, isAuthenticated }) => {
         email,
         password
       }, {
-        withCredentials: true
+        withCredentials: true,
+        credentials: 'include',
       });
       onLoginSuccess();  // Isso atualizaria o estado isAuthenticated para true em App.js
     } catch (error) {
