@@ -23,6 +23,7 @@ const LoginPage = ({ onLoginSuccess, isAuthenticated }) => {
         withCredentials: true,
         credentials: 'include',
       });
+      localStorage.setItem('token', response.data.token);
       onLoginSuccess();  // Isso atualizaria o estado isAuthenticated para true em App.js
     } catch (error) {
       console.error('Erro ao fazer login:', error);

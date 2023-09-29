@@ -16,9 +16,16 @@ function App() {
 
   useEffect(() => {
     const checkToken = async () => {
+      const token = localStorage.getItem('token'); // Adicione esta linha
+      if(!token){
+        navigate('/login');
+        return;
+      }
       try {
         const res = await axios.get('https://roducoins.onrender.com/api/checkToken', {
-          withCredentials: true
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         });
   
         if (res.data.valid) {
