@@ -34,13 +34,7 @@ exports.login = async (req, res) => {
         return res.status(400).json({ message: 'E-mail ou senha inválidos', errorCode: 'INVALID_CREDENTIALS' });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    res.cookie('token', token, {
-        //httpOnly: true,
-        secure: true,  // só enviar o cookie por HTTPS
-        path: '/'  // caminho
-    });
-    
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });    
     res.status(200).json({ token, coins: user.coins });
 };
 
