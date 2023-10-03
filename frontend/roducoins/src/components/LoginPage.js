@@ -4,10 +4,17 @@ import { useNavigate } from 'react-router-dom';
 
 const LoginPage = ({ onLoginSuccess, isAuthenticated }) => {
   const navigate = useNavigate();
+
+  if (isAuthenticated) {
+    navigate('/home');
+    return null;
+  }
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);  // Novo estado para controle do loading
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [loginError, setLoginError] = useState(null);
 
   useEffect(() => {
     if (email && password) {
@@ -25,10 +32,12 @@ const LoginPage = ({ onLoginSuccess, isAuthenticated }) => {
         password,
       });
       localStorage.setItem('token', response.data.token);
+      setLoginError(null);  // Limpa qualquer erro anterior
       onLoginSuccess();
       setIsLoading(false);
     } catch (error) {
       console.error('Erro ao fazer login:', error);
+      setLoginError('E-mail ou senha incorretos');
       setIsLoading(false);
     }
   };
@@ -55,6 +64,7 @@ const LoginPage = ({ onLoginSuccess, isAuthenticated }) => {
         <p className="login-register">
           Ainda não possui uma conta? <a href="#" onClick={() => navigate('/register')}>REGISTRE-SE</a>
         </p>
+        {loginError && <p className="error-message">{loginError}</p>}
       </div>
     </div>
   );

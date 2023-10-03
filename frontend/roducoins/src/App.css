@@ -3,7 +3,50 @@
 html, body{
   margin: 0;
   padding: 0;
+  background-color:#B99F72;
   font-family: 'Lato', sans-serif;
+}
+
+.App-main{
+  height: 80vh;
+  padding: 10vh 0;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100px 1fr;
+  gap: 10px
+}
+
+.player-name{
+  background-color: #454545;
+  border-radius:10px;
+}
+
+.dados{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  column-gap: 10px;
+}
+
+.dados div{
+  background-color: #454545;
+  border-radius:10px;
+}
+
+.saldo-moedas{
+  flex-grow: 1;
+}
+
+.jogos{
+  background-color: #EEEEEE;
+  border-radius: 10px;
+}
+
+.jogo-atual{
+  background-color: #EEEEEE;
+  border-radius: 10px;
 }
 
 .App {
@@ -34,6 +77,11 @@ html, body{
 
 .App-link {
   color: #61dafb;
+}
+
+.error-message{
+  color: red;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
@@ -115,4 +163,56 @@ html, body{
 
 .login-register a:hover {
   color: #ff9100;
+}
+
+/* Classe para a linha principal */
+.main-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Classe para a primeira linha com altura de 100px */
+.top-row {
+  height: 100px;
+}
+
+/* Classe para a primeira coluna da primeira linha (30% da largura) */
+.top-row .col1 {
+  width: 30%;
+  background-color:#454545;
+}
+
+.top-row .col1 img{
+  max-width: 80%;
+}
+
+/* Classe para a segunda coluna da primeira linha (70% da largura) */
+.top-row .col2 {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Classe para a segunda linha que ocupa o resto do espaço */
+.bottom-row {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+/* Classe para a primeira coluna da segunda linha (lista de jogos) */
+.bottom-row .col1 {
+  width: 30%;
+  padding: 20px;
+}
+
+/* Classe para a segunda coluna da segunda linha (jogo selecionado) */
+.bottom-row .col2 {
+  width: 70%;
+  padding: 20px;
 }

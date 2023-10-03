@@ -13,7 +13,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [coins, setCoins] = useState(0); // Inicialmente, o jogador tem 0 moedas
+  const [coins, setCoins] = useState(0);
 
   useEffect(() => {
     const checkToken = async () => {
@@ -94,13 +94,33 @@ function App() {
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/home" element={
           isAuthenticated ? (
-            <main className="App-main">
-              <p>Saldo de moedas: {coins}</p>
-              <button onClick={() => navigate('/bet')}>Apostar</button>
-              <button onClick={viewAdAndEarnCoins}>Ver Anúncio e Ganhar Moedas</button>
-              <button onClick={() => navigate('/ranking')}>Ranking</button>
-              <button onClick={handleLogout}>Deslogar</button>
-            </main>
+            <main class="App-main">
+              <div class="player-name">
+                <p>Usuário</p>
+              </div>
+              <div class="dados">
+                <div class="saldo-moedas">
+                  <p>Saldo de moedas: {coins}</p>
+                </div>
+                <div>
+                  <button onClick={viewAdAndEarnCoins}>Ver Anúncio e Ganhar Moedas</button>
+                </div>
+                <div>
+                  <button onClick={() => navigate('/ranking')}>Ranking</button>
+                </div>
+                <div>
+                  <button onClick={handleLogout}>Deslogar</button>
+                </div>
+                
+              </div>
+              <div class="jogos">
+                <button onClick={() => navigate('/bet')}>Cara ou Coroa</button>
+              </div>
+              <div class="jogo-atual">
+                            {/* Aqui vai o jogo selecionado */}
+                            {/* O conteúdo aqui vai depender do jogo que o usuário selecionou */}
+              </div>
+          </main>
           ) : null
         } />
       </Routes>
