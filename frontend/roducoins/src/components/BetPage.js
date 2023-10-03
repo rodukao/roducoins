@@ -15,12 +15,15 @@ const BetPage = ({ setCoins, coins, isAuthenticated }) => {
   const [amount, setAmount] = useState(0);
 
   const handleBet = async () => {
+    const token = localStorage.getItem('token'); // Pega o token do localStorage
     try {
       const response = await axios.post('https://roducoins.onrender.com/api/game/bet', {
         amount,
         betOn,
       }, {
-        withCredentials: true,
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
       });
       console.log(response.data)
       setCoins(response.data.coins);

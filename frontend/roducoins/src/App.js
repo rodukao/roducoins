@@ -1,3 +1,4 @@
+import './App.css';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -17,7 +18,7 @@ function App() {
   useEffect(() => {
     const checkToken = async () => {
       const token = localStorage.getItem('token'); // Adicione esta linha
-      if(!token){
+      if(!token && location.pathname !== '/register'){
         navigate('/login');
         return;
       }
@@ -62,20 +63,6 @@ function App() {
     }
   }, [isAuthenticated]);
 
-  const makeBet = async () => {
-    try {
-      const response = await axios.post('https://roducoins.onrender.com/api/game/bet', {
-        "amount": 20,
-        "betOn": "coroa"
-      }, {
-        withCredentials: true // Envio de cookies
-      });
-      setCoins(response.data.newCoinBalance);
-    } catch (error) {
-      console.error('Houve um erro ao fazer a aposta:', error);
-    }
-  };
-
   const handleLogout = async () => {
     localStorage.removeItem('token'); // Remove o token do localStorage
     setIsAuthenticated(false);
@@ -100,9 +87,6 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Bem-vindo ao Jogo de Apostas!</h1>
-      </header>
       <Routes>
         <Route path="/login" element={<LoginPage onLoginSuccess={() => setIsAuthenticated(true)} isAuthenticated={isAuthenticated} />} />
         <Route path="/register" element={<RegisterPage />} />

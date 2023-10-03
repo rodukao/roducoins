@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const RegisterPage = ({ isAuthenticated }) => {
 
   const navigate = useNavigate();
+  const token = localStorage.getItem('token');  // Pega o token do localStorage
 
-  if (isAuthenticated) {
+  if (token) {
     navigate('/home');
     return null;
   }
@@ -21,7 +22,8 @@ const RegisterPage = ({ isAuthenticated }) => {
         password
       });
       console.log('Registrado com sucesso:', res.data);
-      navigate('/login');
+      localStorage.setItem('token', res.data.token);
+      navigate('/home');
     } catch (error) {
       console.error('Erro ao registrar:', error);
     }

@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+html, body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +43,76 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.login-card {
+  width: 400px;
+  height: 80%;
+  background-color: #e4e4e4;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-logo {
+  width: 200px;
+  height: 200px;
+  padding: 30px 0;
+}
+
+.login-input,
+.login-button {
+  box-sizing: border-box;
+}
+
+.login-input {
+  margin: 10px 0;
+  padding: 12px;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-button {
+  margin-top: 20px;
+  padding: 12px 0;
+  background-color: #ffa200;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 300px;
+}
+
+.login-button:hover {
+  background-color: #ff9100;
+}
+
+
+.login-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.login-register {
+  margin-top: 20px;
+}
+
+.login-register a {
+  color: #ffa200;
+  text-decoration: none;
+}
+
+.login-register a:hover {
+  color: #ff9100;
 }
