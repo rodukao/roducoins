@@ -54,8 +54,10 @@ exports.getUserInfo = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
+
+    const name = user.email.split('@')[0];
   
-    res.status(200).json({ coins: user.coins });
+    res.status(200).json({ coins: user.coins, name });
   };
 
   exports.getTopUsers = async (req, res) => {

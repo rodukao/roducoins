@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap');
 
 html, body{
   margin: 0;
   padding: 0;
-  background-color:#B99F72;
+  background-color:#DFDFDF;
   font-family: 'Lato', sans-serif;
 }
 
@@ -23,6 +24,14 @@ html, body{
   border-radius:10px;
 }
 
+.player-name, .dados{
+  font-family: 'Inter', sans-serif;
+  line-height: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
 .dados{
   display: flex;
   justify-content: flex-end;
@@ -36,7 +45,62 @@ html, body{
 }
 
 .saldo-moedas{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: end;
+  gap: 20px;
+  padding-right: 20px;
   flex-grow: 1;
+}
+
+.saldo-moedas img{
+  width: 40px;
+  height: 40px;
+}
+
+.mais-roducoins{
+  background-color:#FF013E !important;
+}
+
+.mais-roducoins button{
+  border: none;
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
+  background-color: transparent;
+  padding: 0 30px;
+  height: 100%;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.tela-ranking button{
+  border: none;
+  background-color: transparent;
+  height: 100%;
+  cursor: pointer;
+}
+
+.tela-ranking button svg{
+  width: 40px;
+  height: 40px;
+  padding: 20px;
+  fill: white;
+}
+
+.botao-logout button{
+  border: none;
+  background-color: rgb(255, 0, 34);
+  height: 100%;
+  cursor: pointer;
+}
+
+.botao-logout button svg{
+  width: 40px;
+  height: 40px;
+  padding: 20px;
+  fill: white;
 }
 
 .jogos{
