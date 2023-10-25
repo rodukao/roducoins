@@ -106,11 +106,86 @@ html, body{
 .jogos{
   background-color: #EEEEEE;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.jogos button{    
+  width: 100%;
+  background-color: #454545;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 20px;
+  color: white;
+  font-family: 'Inter';
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.em-breve{
+  cursor: not-allowed !important;
+  background-color: #b7b7b7 !important;
 }
 
 .jogo-atual{
   background-color: #EEEEEE;
   border-radius: 10px;
+}
+
+.ranking-container{
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100%;
+}
+
+.anuncio-ranking{
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.anuncio-ranking iframe{
+  width: 200px;
+  height: 100%;
+  border: 0;
+}
+
+.ranking{
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.ranking h2{
+  background-color:#FF013E;
+  color: white;
+  padding: 20px;
+  margin: 0;
+  text-align: left;
+}
+
+.tabela-jogadores{
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.tabela-jogadores th{
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+}
+
+.tabela-jogadores td{
+  padding-left: 20px;
+}
+
+tr:nth-child(even) {background-color: #dddddd;}
+
+.tabela-jogadores tr{
+  line-height: 30px;
 }
 
 .App {
@@ -168,6 +243,7 @@ html, body{
 .login-card {
   width: 400px;
   height: 80%;
+  max-height: 800px;
   background-color: #e4e4e4;
   border-radius: 10px;
   padding: 20px;
@@ -211,7 +287,7 @@ html, body{
 }
 
 
-.login-button:disabled {
+.login-button:disabled, .jogar-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
@@ -279,4 +355,154 @@ html, body{
 .bottom-row .col2 {
   width: 70%;
   padding: 20px;
+}
+
+.coin-options {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  height: 80px;
+}
+
+.cara-coroa p{
+  text-align: left;
+  margin: 30px 0 0 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.coin-option {
+  cursor: pointer;
+  position: relative;
+}
+
+.coin-selection{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 20px 0;
+}
+
+.coin-option.selected {
+  /* Estilização para a opção selecionada, se desejar */
+}
+
+.coin {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin: 20px 0;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.coin.cara {
+  background-color: orange;
+}
+
+.coin.coroa {
+  background-color: darkgray;
+}
+
+.valor-aposta{
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+  background: #d8d8d8;
+  font-size: 30px;
+  color: #5b5b5b;
+  font-weight: bold;
+  margin-top: 60px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.jogar-button{
+  background-color: #FF013E;
+  color: white;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  width: 100%;
+  cursor: pointer;
+  margin: 20px 0 0 0;
+  box-sizing: border-box;
+}
+
+.cara-coroa-container{
+  display: flex;
+}
+
+.dados-cara-coroa{
+  flex: 1;
+}
+
+.resultado-cara-coroa{
+  flex: 1;
+}
+
+.checkmark {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-color: green;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+}
+
+.checkmark::before {
+  content: "✔";
+  font-size: 20px;
+}
+
+.coin-container {
+  perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.side {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  backface-visibility: hidden;
+}
+
+.cara {
+  background-color: orange;
+  transform: rotateY(0deg);
+}
+
+.coroa {
+  background-color: darkgray;
+  transform: rotateY(180deg);
+}
+
+.resultado-mensagem{
+  margin: 10px;
+  font-size: 1.5em;
+  margin: 10px 0 0 0;
+}
+
+.spinning {
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }

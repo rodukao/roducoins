@@ -13,8 +13,16 @@ exports.placeBet = async (req, res) => {
     }
   
     // Gerar resultado
-    const options = ['cara', 'coroa'];
-    const result = options[Math.floor(Math.random() * options.length)];
+    let result;
+    const randomNum = Math.random();
+
+    if (randomNum < 0.6) {
+      // 60% de chance de ser a escolha do usuário
+      result = betOn;
+    } else {
+      // 40% de chance de ser a opção contrária
+      result = betOn === 'cara' ? 'coroa' : 'cara';
+    }
 
     console.log('Usuário', userId, 'está fazendo uma aposta de', amount, 'em', betOn);
   
