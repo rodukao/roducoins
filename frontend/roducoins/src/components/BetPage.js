@@ -29,6 +29,11 @@ const BetPage = ({ setCoins, coins, isAuthenticated }) => {
     console.log(betOn)
     console.log(selectedOption)
 
+    if(amount => coins){
+      setResult('Você não tem moedas suficientes para fazer essa aposta');
+      return;
+    }
+
     try {
     setTimeout(async () => {
       const token = localStorage.getItem('token'); // Pega o token do localStorage
